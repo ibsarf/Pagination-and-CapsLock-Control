@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Pagination | CapsLock Control</title>
+</head>
+
+<body>
+    <div class="pagination">
+        <a href="#" class="exception">&laquo;</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#" class="exception">&raquo;</a>
+    </div>
+    <br>
+    <input type="text" id="input1" placeholder="Buraya Yazın..." />
+    <p id="text1">CapsLook Open</p>
+    <script>
+        // let a=document.querySelectorAll("a");
+        // for(let i=0;i<a.length;i++){
+
+        //     a[i].addEventListener("click", function(){
+
+        //         let active=document.getElementsByClassName("active");
+        //         active[0].className=active[0].className.replace("active", "")
+        //         this.className+="active"
+        //         console.log(active[0])
+        //         console.log(this)
+        //     });
+        // }
+        $(function () {
+            let a = document.querySelectorAll("a");
+            for (let i = 0; i < a.length; i++) {
+                $(a[i]).click(function () {
+                    $(this).not(".exception").addClass("active").siblings().removeClass("active");
+                })
+
+            }
+        })
+        // capslock controlü
+        let input = document.querySelector("#input1");
+        let text = document.querySelector("#text1");
+
+        input.addEventListener("keyup", function (event) {
+            event.getModifierState("CapsLock") ? text.style.display = "block" : text.style.display = "none";
+            // if(event.getModifierState("CapsLock")){
+            //     text.style.display="block"
+            // }else{
+            //     text.style.display="none"
+            // }
+        })
+
+
+    </script>
+</body>
+
+</html>
